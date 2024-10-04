@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aayubot - About</title>
+    <link rel="shortcut icon" href="./LOGO/favicon.ico" type="image/x-icon">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        .back {
+            height: 100%;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            opacity: 1;
+        }
+
+        .back img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+            opacity: 1;
+        }
+
+        .main {
+            height: 100%;
+            z-index: 1;
+        }
+
+        header {
+            background-color: transparent;
+            backdrop-filter: blur(5px);
+            color: white;
+            padding: 1vh 0;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 3vw;
+            height: 8vh;
+        }
+
+        header ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        header ul li {
+            padding: 10px;
+            margin: 5px 0;
+            cursor: pointer;
+        }
+
+        header ul li a {
+            text-decoration: none;
+            color: #EAD8B1;
+            color: aliceblue;
+        }
+
+        header ul li:hover {
+            background-color: #e0e0e0;
+            background-color: #6A9AB0;
+            background-color: rgba(0, 0, 0, 0.2);
+            background-color: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(5px);
+            border-radius: 1vh;
+            color: #001F3F;
+            color: aliceblue;
+            transition: all 0.3s ease-in-out;
+        }
+
+        header ul li:hover a {
+            background-color: transparent;
+            transition: all 0;
+            color: #0B0c10;
+            color: aliceblue;
+        }
+
+        header .nav-part1 {
+            padding-top: 1%;
+            width: 15%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        header .nav-part1 img {
+            background-color: #03122075;
+            height: 35%;
+            width: 35%;
+        }
+
+        .box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            width: 100%;
+        }
+
+        .part1 {
+            width: 40%;
+            background-color: blue;
+            border: 1px solid #6A9AB0;
+            background-color: rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(5px);
+            color: aliceblue;
+            font-size: 3vh;
+            padding: 3vh;
+            border-radius: 1vw;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="back">
+        <img src="./Aboutbg.jpeg" alt="">
+    </div>
+
+    <div class="main">
+        <header>
+            <div class="nav-part1">
+                <img src="./bg1.png" alt="">
+                <h1>AayuBot</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="Ayu.html">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <div class="box">
+            <div class="part1">
+                <p>Introducing AayuBot, an advanced chatbot designed to transform how we diagnose medical conditions. By
+                    simply providing
+                    the name of a medicine, users gain access to a comprehensive repository of medical knowledge.
+                    AayuBot
+                    integrates data
+                    from multiple extensive datasets, ensuring that users receive not only potential diagnoses but also
+                    detailed information
+                    about medicines, including their uses, side effects, and dosage recommendations. This cutting-edge
+                    system is designed to
+                    enhance healthcare accessibility and efficiency, bridging the gap between medicine names and
+                    actionable
+                    medical
+                    insights.
+                </p>
+                <br>
+                <p>A UNIQUE FEATURE allows travelers to find equivalent medications across different regions, ensuring
+                    uninterrupted care.
+                    The system leverages Python and NLP technologies for an intuitive user experience, prioritizing data
+                    privacy and
+                    security.
+                    Other UNIQUE FEATURE is that diagnose comes with a warning, showing type of medicine they are using
+                    (i.e. Antibiotics,
+                    Antacids, etc.).
+                </p>
+            </div>
+        </div>
+
+
+    </div>
+
+</body>
+
+</html>

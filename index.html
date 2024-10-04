@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AayuBot</title>
+    <link rel="shortcut icon" href="./LOGO/favicon.ico" type="image/x-icon">
+    <style>
+        ::-webkit-scrollbar {
+            width: 7px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(transparent, #6A9AB0);
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(transparent, #6A9AB0);
+        }
+
+        ::-webkit-scrollbar-track {
+            background-color: transparent;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            overflow-y: hidden;
+        }
+
+        .bg-image {
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+
+        .bg-image img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+            opacity: 1;
+        }
+
+        .main {
+            height: 100%;
+            z-index: 1;
+        }
+
+        header {
+            background-color: transparent;
+            backdrop-filter: blur(5px);
+            color: white;
+            padding: 1vh 0;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 3vw;
+            height: 8vh;
+        }
+
+        header .nav-part1 {
+            padding-top: 1%;
+            width: 15%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        header .nav-part1 img{
+        
+            background-color: #03122075;
+            height: 35%;
+            width: 35%;
+        }
+
+        .search-section {
+            z-index: 20;
+            text-align: center;
+            margin-top: 3vh;
+        }
+
+        .search-container {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .search-container input {
+            background-color: rgba(255, 255, 255, 0.1);
+            background-color: rgba(0, 0, 0, 0.1);
+            border-radius: 1vh;
+            border: 2px solid lightblue;
+            color: aliceblue;
+            outline: none;
+            backdrop-filter: blur(10px);
+        }
+
+        .search-container input::-webkit-input-placeholder {
+            color: lightcyan;
+            padding: 10px 0;
+            margin-left: 0;
+        }
+
+        .search-container input:focus::-webkit-input-placeholder {
+            color: #9fcee4;
+            background-color: transparent;
+        }
+
+        .search-container input:focus {
+            border: 1px solid #EAD8B1;
+            border: 2px solid #9fcee4;
+        }
+
+        #searchBar {
+            width: 80%;
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        .results-section1,
+        .results-section2 {
+            margin: 20px auto;
+            text-align: center;
+        }
+
+        #medicine-info {
+            background-color: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(3px);
+            padding: 20px;
+            border-radius: 1vw;
+            max-width: 79%;
+            max-height: 73vh;
+            overflow-y: scroll;
+            margin: 20px auto;
+            color: aliceblue;
+            border: 1px solid #3A6D8C;
+        }
+
+        #medicine-info h3,
+        .results-section1 h3 {
+            font-size: 1.5vw;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        ul li {
+            padding: 10px;
+            margin: 5px 0;
+            cursor: pointer;
+        }
+
+        header ul li a {
+            text-decoration: none;
+            color: #EAD8B1;
+            color: aliceblue;
+        }
+
+        header ul li:hover {
+            background-color: #e0e0e0;
+            background-color: #6A9AB0;
+            background-color: rgba(0, 0, 0, 0.2);
+            background-color: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(5px);
+            border-radius: 1vh;
+            color: #001F3F;
+            color: aliceblue;
+            transition: all 0.3s ease-in-out;
+        }
+
+        header ul li:hover a {
+            background-color: transparent;
+            transition: all 0;
+            color: #0B0c10;
+            color: aliceblue;
+        }
+
+        .results-section1 ul li {
+            border: 1px solid #6A9AB0;
+            border-radius: 1vh;
+            width: 60%;
+            color: aliceblue;
+        }
+
+        .results-section1 ul li:hover {
+            background-color: #6a9ab094;
+            background-color: #6A9AB0;
+            background-color: transparent;
+            background-color: rgba(255, 255, 255, 0.5);
+            border-radius: 1vh;
+            color: aliceblue;
+            color: #001F3F;
+            transition: all 0.3s ease-in-out;
+        }
+
+        #medicine-image {
+            max-width: 150px;
+            margin-top: 10px;
+        }
+
+        .box {
+            height: 100%;
+            width: 100%;
+            display: flex;
+            align-items: top;
+            justify-content: center;
+        }
+
+        .box .results-section1 {
+            height: fit-content;
+            max-height: 73vh;
+            background-color: rgba(0, 0, 0, .3);
+            backdrop-filter: blur(3px);
+            border: 1px solid #3A6D8C;
+            width: fit-content;
+            width: 60%;
+            overflow-y: scroll;
+            border-radius: 1vw;
+            margin-left: 3.5vw;
+            color: aliceblue;
+            padding: 21px;
+            margin-bottom: 0;
+        }
+
+        .box .results-section2 {
+            height: fit-content;
+            width: 70%;
+            max-width: 60%;
+            margin-top: 0;
+        }
+
+        .box .results-section1 ul {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        .contact {
+            background-color: pink;
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bg-image">
+        <img src="./bg.jpeg" alt="">
+    </div>
+
+
+    <div class="main">
+        <header>
+            <div class="nav-part1">
+                <img src="./bg1.png" alt="">
+                <h1>AayuBot</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="Ayu.html">Home</a></li>
+                    <li><a href="About.html">About</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <section class="search-section">
+            <div class="search-container">
+                <input type="text" id="searchBar" placeholder="Search for Medicine..." oninput="searchMedicines()">
+            </div>
+        </section>
+
+        <section class="box">
+            <section class="results-section1">
+                <h3>Medicine List</h3>
+                <ul id="medicine-list"></ul>
+            </section>
+
+            <!-- Selected Medicine Info -->
+            <section class="results-section2">
+                <div id="medicine-info">
+                    <h3>Medicine Information</h3>
+                    <p id="result-text"></p>
+                    <img id="medicine-image" src="" alt="">
+                </div>
+            </section>
+        </section>
+
+    </div>
+
+    <!-- <section class="contact">
+        <div class="contact_info">
+        
+            <h1>Contact with us</h1>
+            <form action="Mail.php" method="POST">
+                <input type="text" name="contact_name" placeholder="Your Name">
+                <input type="email" name="contact_email" placeholder="Enter Email ID" required></i>
+                <textarea name="contact_message" placeholder="Send a message" rows="6"></textarea>
+                <button name="send_contact_info" type="submit">Send</button>
+            </form>
+        </div>
+        <div class="contact_img">
+            <img height="100%" width="100%" src="http://localhost/My_Php/Image/contact.png" alt="">
+        </div>
+    </section> -->
+
+
+    <script>
+        let medicineData = [];
+
+        // Load the JSON file with the medicine data
+        fetch('Medicine_Data.json')
+            .then(response => response.json())
+            .then(data => {
+                medicineData = data;
+            })
+            .catch(error => {
+                console.error("Error loading medicine data:", error);
+            });
+
+        function searchMedicines() {
+            const partialName = document.getElementById('searchBar').value.toUpperCase();
+            const medicineList = document.getElementById('medicine-list');
+            const resultText = document.getElementById('result-text');
+            const imageLabel = document.getElementById('medicine-image');
+
+            // Clear the previous results and image
+            medicineList.innerHTML = '';
+            imageLabel.src = '';
+            resultText.innerHTML = '';
+
+            // If the search bar is empty, don't show the list or any results
+            if (partialName.trim() === '') {
+                return;
+            }
+
+            // Filter matching medicines
+            const matches = medicineData.filter(medicine => medicine["Medicine Name"].toUpperCase().includes(partialName));
+
+            if (matches.length === 0) {
+                resultText.innerHTML = "No matching medicines found.";
+                return;
+            }
+
+            // Display the filtered medicines in the list
+            matches.forEach((medicine, index) => {
+                const li = document.createElement('li');
+                li.textContent = medicine["Medicine Name"];
+                li.onclick = function () {
+                    showMedicineInfo(index);
+                };
+                medicineList.appendChild(li);
+            });
+        }
+
+        function showMedicineInfo(index) {
+            const resultText = document.getElementById('result-text');
+            const imageLabel = document.getElementById('medicine-image');
+
+            const medicine = medicineData[index];
+            const name = medicine["Medicine Name"];
+            const composition = medicine["Composition"];
+            const uses = medicine["Uses"];
+            const sideEffects = medicine["Side_effects"];
+            const imageUrl = medicine["Image URL"];
+            const manufacturer = medicine["Manufacturer"];
+            const excellentReview = medicine["Excellent Review %"];
+            const averageReview = medicine["Average Review %"];
+            const poorReview = medicine["Poor Review %"];
+
+            resultText.innerHTML = `
+                <strong>Manufacturer:</strong> ${manufacturer}<br><br>
+                <strong>Composition:</strong> ${composition}<br><br>
+                <strong>Uses:</strong> ${uses}<br><br>
+                <strong>Side Effects:</strong> ${sideEffects}<br><br>
+                <strong>Reviews:</strong> Excellent: ${excellentReview}% | Average: ${averageReview}% | Poor: ${poorReview}%
+            `;
+
+            imageLabel.src = imageUrl;
+        }
+    </script>
+
+</body>
+
+</html>
