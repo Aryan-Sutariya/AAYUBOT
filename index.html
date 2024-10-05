@@ -74,8 +74,8 @@
             justify-content: space-between;
         }
 
-        header .nav-part1 img{
-        
+        header .nav-part1 img {
+
             background-color: #03122075;
             height: 35%;
             width: 35%;
@@ -289,7 +289,6 @@
                 <ul id="medicine-list"></ul>
             </section>
 
-            <!-- Selected Medicine Info -->
             <section class="results-section2">
                 <div id="medicine-info">
                     <h3>Medicine Information</h3>
@@ -301,25 +300,7 @@
 
     </div>
 
-    <!-- <section class="contact">
-        <div class="contact_info">
-        
-            <h1>Contact with us</h1>
-            <form action="Mail.php" method="POST">
-                <input type="text" name="contact_name" placeholder="Your Name">
-                <input type="email" name="contact_email" placeholder="Enter Email ID" required></i>
-                <textarea name="contact_message" placeholder="Send a message" rows="6"></textarea>
-                <button name="send_contact_info" type="submit">Send</button>
-            </form>
-        </div>
-        <div class="contact_img">
-            <img height="100%" width="100%" src="http://localhost/My_Php/Image/contact.png" alt="">
-        </div>
-    </section> -->
-
-
-    <script>
-        let medicineData = [];
+    <script>let medicineData = [];
 
         // Load the JSON file with the medicine data
         fetch('Medicine_Data.json')
@@ -356,21 +337,20 @@
             }
 
             // Display the filtered medicines in the list
-            matches.forEach((medicine, index) => {
+            matches.forEach((medicine) => {
                 const li = document.createElement('li');
                 li.textContent = medicine["Medicine Name"];
+                // Store the full medicine object in the onclick handler
                 li.onclick = function () {
-                    showMedicineInfo(index);
+                    showMedicineInfo(medicine); // Pass the actual medicine data
                 };
                 medicineList.appendChild(li);
             });
         }
 
-        function showMedicineInfo(index) {
+        function showMedicineInfo(medicine) {
             const resultText = document.getElementById('result-text');
             const imageLabel = document.getElementById('medicine-image');
-
-            const medicine = medicineData[index];
             const name = medicine["Medicine Name"];
             const composition = medicine["Composition"];
             const uses = medicine["Uses"];
@@ -382,15 +362,16 @@
             const poorReview = medicine["Poor Review %"];
 
             resultText.innerHTML = `
-                <strong>Manufacturer:</strong> ${manufacturer}<br><br>
-                <strong>Composition:</strong> ${composition}<br><br>
-                <strong>Uses:</strong> ${uses}<br><br>
-                <strong>Side Effects:</strong> ${sideEffects}<br><br>
-                <strong>Reviews:</strong> Excellent: ${excellentReview}% | Average: ${averageReview}% | Poor: ${poorReview}%
-            `;
+        <strong>Manufacturer:</strong> ${manufacturer}<br><br>
+        <strong>Composition:</strong> ${composition}<br><br>
+        <strong>Uses:</strong> ${uses}<br><br>
+        <strong>Side Effects:</strong> ${sideEffects}<br><br>
+        <strong>Reviews:</strong> Excellent: ${excellentReview}% | Average: ${averageReview}% | Poor: ${poorReview}%
+    `;
 
             imageLabel.src = imageUrl;
         }
+
     </script>
 
 </body>
