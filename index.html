@@ -6,252 +6,154 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AayuBot</title>
     <link rel="shortcut icon" href="./LOGO.png" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet" />
     <style>
-        ::-webkit-scrollbar {
-            width: 7px;
-        }
+        @media screen and (max-width: 570px) {
+            .bg-image {
+                height: 11 0vh;
+                width: 100%;
+                object-fit: cover;
+                object-position: center center;
+            }
 
-        ::-webkit-scrollbar-thumb {
-            background: linear-gradient(transparent, #6A9AB0);
-            border-radius: 10px;
-        }
+            .main {
+                position: absolute;
+                top: 0vh;
+                left: 0;
+                height: 100vh;
+                width: 100%;
 
-        ::-webkit-scrollbar-thumb:hover {
-            background: linear-gradient(transparent, #6A9AB0);
-        }
+            }
 
-        ::-webkit-scrollbar-track {
-            background-color: transparent;
-        }
+            header {
 
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
-            margin: 0;
-            padding: 0;
-            overflow-y: hidden;
-        }
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
 
-        .bg-image {
-            height: 100%;
-            width: 100%;
-            position: absolute;
-            top: 0;
-            left: 0;
-            z-index: -1;
-        }
 
-        .bg-image img {
-            height: 100%;
-            width: 100%;
-            object-fit: cover;
-            opacity: 1;
-        }
+            header .nav-part1 {
+                display: flex;
+                align-items: center;
+                justify-content: space-around;
+            }
 
-        .main {
-            height: 100%;
-            z-index: 1;
-        }
+            header .nav-part1 {
+                z-index: 1000;
+                /* Ensure the header stays on top */
+            }
 
-        header {
-            background-color: transparent;
-            backdrop-filter: blur(5px);
-            color: white;
-            padding: 1vh 0;
-            text-align: center;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 3vw;
-            height: 8vh;
-        }
+            header .nav-part1 img {
+                height: 8vh;
+                width: 12vw;
+            }
 
-        header .nav-part1 {
-            padding-top: 1%;
-            width: 15%;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
+            header nav ul {
+                display: none;
+                /* Initially hidden */
+                flex-direction: column;
+                gap: 1vh;
+                background-color: rgba(0, 0, 0, 0.5);
+                /* Darker background for visibility */
+                position: absolute;
+                right: 1vw;
+                top: 7vh;
+                width: fit-content;
+                border-radius: 1vh;
+                padding: 1vh;
+                z-index: 9999;
+                transition: all 0.3s ease-in-out;
+            }
 
-        header .nav-part1 img {
+            header nav ul li {
+                list-style: none;
+                margin: 1vh 0;
+            }
 
-            background-color: #03122075;
-            height: 35%;
-            width: 35%;
-        }
+            header nav ul li a {
+                text-decoration: none;
+                color: white;
+                font-size: 2vh;
 
-        .search-section {
-            z-index: 20;
-            text-align: center;
-            margin-top: 3vh;
-        }
+            }
 
-        .search-container {
-            max-width: 500px;
-            margin: 0 auto;
-        }
+            .search-section {
+                z-index: -1;
+            }
 
-        .search-container input {
-            background-color: rgba(255, 255, 255, 0.1);
-            background-color: rgba(0, 0, 0, 0.1);
-            border-radius: 1vh;
-            border: 2px solid lightblue;
-            color: aliceblue;
-            outline: none;
-            backdrop-filter: blur(10px);
-        }
+            .search-section .search-container {
+                z-index: -1;                
+            }
 
-        .search-container input::-webkit-input-placeholder {
-            color: lightcyan;
-            padding: 10px 0;
-            margin-left: 0;
-        }
+            .search-section .search-container input {
+               
 
-        .search-container input:focus::-webkit-input-placeholder {
-            color: #9fcee4;
-            background-color: transparent;
-        }
+                z-index: -10;
+            }
 
-        .search-container input:focus {
-            border: 1px solid #EAD8B1;
-            border: 2px solid #9fcee4;
-        }
 
-        #searchBar {
-            width: 80%;
-            padding: 10px;
-            font-size: 16px;
-        }
 
-        .results-section1,
-        .results-section2 {
-            margin: 20px auto;
-            text-align: center;
-        }
+            .box {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+                height: 85vh;
+                width: 100%;
+                margin-top: 1vh;
+                gap: 1vh;
+                z-index: 1;
+                /* Ensure box is below the nav bar */
+            }
 
-        #medicine-info {
-            background-color: rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(3px);
-            padding: 20px;
-            border-radius: 1vw;
-            max-width: 79%;
-            max-height: 73vh;
-            overflow-y: scroll;
-            margin: 20px auto;
-            color: aliceblue;
-            border: 1px solid #3A6D8C;
-        }
 
-        #medicine-info h3,
-        .results-section1 h3 {
-            font-size: 1.5vw;
-        }
 
-        ul {
-            list-style: none;
-            padding: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+            .box .results-section1 {
+                height: fit-content;
+                max-height: 30%;
+                min-width: 98%;
+                padding: 0;
+                margin: 0;
+                font-size: 2vh;
+                border-radius: 1vh;
+            }
 
-        ul li {
-            padding: 10px;
-            margin: 5px 0;
-            cursor: pointer;
-        }
+            .box .results-section1 h3 {
+                font-size: 3vh;
+                width: 80%;
+                margin: auto;
+            }
 
-        header ul li a {
-            text-decoration: none;
-            color: #EAD8B1;
-            color: aliceblue;
-        }
+            .box .results-section2 {
+                box-sizing: border-box;
+                min-width: 100%;
+                max-height: 63%;
+            }
 
-        header ul li:hover {
-            background-color: #e0e0e0;
-            background-color: #6A9AB0;
-            background-color: rgba(0, 0, 0, 0.2);
-            background-color: rgba(255, 255, 255, 0.4);
-            backdrop-filter: blur(5px);
-            border-radius: 1vh;
-            color: #001F3F;
-            color: aliceblue;
-            transition: all 0.3s ease-in-out;
-        }
+            .box .results-section2 #medicine-info {
+                font-size: 2vh;
+                background-color: rgba(0, 0, 0, 0.4);
+                backdrop-filter: blur(3px);
+                border-radius: 1vh;
+                padding: 0;
+                margin: 0;
+                min-width: 98%;
+                float: right;
+                height: fit-content;
+                height: 100%;
+                margin-right: 1vw;
+            }
 
-        header ul li:hover a {
-            background-color: transparent;
-            transition: all 0;
-            color: #0B0c10;
-            color: aliceblue;
-        }
+            .box .results-section2 #medicine-info h3 {
+                font-size: 3vh;
+                margin: 0;
+                padding: 0;
+                width: 100%;
+                margin: auto;
+            }
 
-        .results-section1 ul li {
-            border: 1px solid #6A9AB0;
-            border-radius: 1vh;
-            width: 60%;
-            color: aliceblue;
-        }
-
-        .results-section1 ul li:hover {
-            background-color: #6a9ab094;
-            background-color: #6A9AB0;
-            background-color: transparent;
-            background-color: rgba(255, 255, 255, 0.5);
-            border-radius: 1vh;
-            color: aliceblue;
-            color: #001F3F;
-            transition: all 0.3s ease-in-out;
-        }
-
-        #medicine-image {
-            max-width: 150px;
-            margin-top: 10px;
-        }
-
-        .box {
-            height: 100%;
-            width: 100%;
-            display: flex;
-            align-items: top;
-            justify-content: center;
-        }
-
-        .box .results-section1 {
-            height: fit-content;
-            max-height: 73vh;
-            background-color: rgba(0, 0, 0, .3);
-            backdrop-filter: blur(3px);
-            border: 1px solid #3A6D8C;
-            width: fit-content;
-            width: 60%;
-            overflow-y: scroll;
-            border-radius: 1vw;
-            margin-left: 3.5vw;
-            color: aliceblue;
-            padding: 21px;
-            margin-bottom: 0;
-        }
-
-        .box .results-section2 {
-            height: fit-content;
-            width: 70%;
-            max-width: 60%;
-            margin-top: 0;
-        }
-
-        .box .results-section1 ul {
-            width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-        }
-
-        .contact {
-            background-color: pink;
-            height: 100%;
         }
     </style>
 </head>
@@ -270,10 +172,12 @@
             </div>
             <nav>
                 <ul>
-                    <li><a href="Ayu.html">Home</a></li>
+                    <li><a href="index.html">Home</a></li>
                     <li><a href="About.html">About</a></li>
-                    <li><a href="#">Contact</a></li>
+                    <!-- <li><a href="#">Contact</a></li> -->
                 </ul>
+                <i class="ri-menu-line" onclick="toggleNav(this)"></i>
+
             </nav>
         </header>
 
@@ -300,7 +204,25 @@
 
     </div>
 
-    <script>let medicineData = [];
+    <script>
+        let changenav = function (ele) {
+            ele.classList.toggle("ri-close-large-line");
+        }
+
+        let toggleNav = function (ele) {
+            // Toggle the icon between menu and close
+            ele.classList.toggle("ri-close-large-line");
+
+            // Toggle the visibility of the menu (ul)
+            const navMenu = document.querySelector('header nav ul');
+            if (navMenu.style.display === "flex") {
+                navMenu.style.display = "none";
+            } else {
+                navMenu.style.display = "flex";
+            }
+        };
+
+        let medicineData = [];
 
         // Load the JSON file with the medicine data
         fetch('Medicine_Data.json')
@@ -362,11 +284,11 @@
             const poorReview = medicine["Poor Review %"];
 
             resultText.innerHTML = `
-        <strong>Manufacturer:</strong> ${manufacturer}<br><br>
-        <strong>Composition:</strong> ${composition}<br><br>
-        <strong>Uses:</strong> ${uses}<br><br>
-        <strong>Side Effects:</strong> ${sideEffects}<br><br>
-        <strong>Reviews:</strong> Excellent: ${excellentReview}% | Average: ${averageReview}% | Poor: ${poorReview}%
+    <strong>Manufacturer:</strong> ${manufacturer}<br><br>
+    <strong>Composition:</strong> ${composition}<br><br>
+    <strong>Uses:</strong> ${uses}<br><br>
+    <strong>Side Effects:</strong> ${sideEffects}<br><br>
+    <strong>Reviews:</strong> Excellent: ${excellentReview}% | Average: ${averageReview}% | Poor: ${poorReview}%
     `;
 
             imageLabel.src = imageUrl;
