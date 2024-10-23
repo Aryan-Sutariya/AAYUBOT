@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aayubot - About</title>
     <link rel="shortcut icon" href=".//LOGO.png" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet" />
+
 
     <style>
         * {
@@ -52,18 +54,19 @@
         .main {
             height: 100%;
             z-index: 1;
+
         }
 
         header {
             background-color: transparent;
             backdrop-filter: blur(5px);
             color: white;
-            padding: 1vh 0;
+            padding: 1vh 3vw;
             text-align: center;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 0 3vw;
+
             height: 8vh;
         }
 
@@ -128,7 +131,7 @@
             width: 100%;
             position: fixed;
             overflow-y: scroll;
-            padding-top: 23vh;
+            padding-top: 25vh;
         }
 
         .part1 {
@@ -142,6 +145,125 @@
             padding: 3vh;
             border-radius: 1vw;
 
+        }
+
+        .box .part1 img {
+            height: 100%;
+            width: 100%;
+            z-index: -1;
+
+        }
+
+        @media screen and (min-width: 570px) {
+            header nav i {
+                display: none;
+            }
+
+            header nav ul {
+                z-index: 1000;
+            }
+        }
+
+        @media screen and (max-width: 570px) {
+            header nav {
+                display: block;
+            }
+        }
+
+        @media screen and (max-width: 570px) {
+            .bg-image {
+                height: 11 0vh;
+                width: 100%;
+                object-fit: cover;
+                object-position: center center;
+            }
+
+            .main {
+                position: absolute;
+                top: 0vh;
+                left: 0;
+                height: 100vh;
+                width: 100%;
+            }
+
+            header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            header .nav-part1 {
+                display: flex;
+                align-items: center;
+                justify-content: space-around;
+                z-index: 1000;
+            }
+
+
+            header .nav-part1 img {
+                height: 8vh;
+                width: 12vw;
+                background-color: transparent;
+            }
+
+            header nav {
+                z-index: 9999;
+            }
+
+            header nav ul {
+                display: none;
+                /* Initially hidden */
+                flex-direction: column;
+                gap: 1vh;
+                background-color: rgba(0, 0, 0, 0.9);
+                /* Darker background for visibility */
+                position: absolute;
+                right: 1vw;
+                top: 7vh;
+                width: fit-content;
+                border-radius: 1vh;
+                padding: 1vh;
+                z-index: 9999;
+                transition: all 0.3s ease-in-out;
+            }
+
+            header nav ul li {
+                list-style: none;
+                margin: 1vh 0;
+            }
+
+            header nav ul li a {
+                text-decoration: none;
+                color: white;
+                font-size: 2vh;
+
+            }
+
+            .box {
+                max-width: fit-content;
+                width: 100%;
+                height: 88%;
+                margin-top: 3vh;
+                z-index: -1;
+            }
+
+            .box .part1 {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+                margin-top: 32vh;
+                width: 100%;
+                height: fit-content;
+                z-index: -1;
+            }
+
+            .box .part1 img {
+                height: 100%;
+                width: 100%;
+                z-index: -1;
+
+            }
         }
     </style>
 </head>
@@ -161,8 +283,10 @@
                 <ul>
                     <li><a href="index.html">Home</a></li>
                     <li><a href="About.html">About</a></li>
-                    <li><a href="#">Contact</a></li>
+                    <!-- <li><a href="#">Contact</a></li> -->
                 </ul>
+                <i class="ri-menu-line" onclick="toggleNav(this)"></i>
+
             </nav>
         </header>
 
@@ -195,7 +319,7 @@
                     Antacids, etc.).</p>
                 <br>
                 <p>
-                <h1 style="text-align:center;">Silent Feature</h1>
+                <h1 style="text-align:center;">Salient Feature</h1>
                 </p>
                 <img src="./Feature.png" alt="">
             </div>
@@ -203,7 +327,20 @@
 
 
     </div>
+    <script>
+        let toggleNav = function (ele) {
+            // Toggle the icon between menu and close
+            ele.classList.toggle("ri-close-large-line");
 
+            // Toggle the visibility of the menu (ul)
+            const navMenu = document.querySelector('header nav ul');
+            if (navMenu.style.display === "flex") {
+                navMenu.style.display = "none";
+            } else {
+                navMenu.style.display = "flex";
+            }
+        };
+    </script>
 </body>
 
 </html>
