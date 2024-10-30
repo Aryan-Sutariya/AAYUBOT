@@ -261,121 +261,144 @@ header ul li:hover a {
     background-color: pink;
     height: 100%;
 }
-
-/* 
-Tablet (max-width: 768px)
-@media screen and (max-width: 768px) {
-    header {
-        flex-direction: column;
-        height: auto;
-        padding: 10px 2vw;
-        background-color: pink;
-    }
-
-    header .nav-part1 {
+@media screen and (max-width: 570px) {
+    .bg-image {
+        height: 110vh;
         width: 100%;
-        justify-content: center;
-        margin-bottom: 10px;
+        object-fit: cover;
+        object-position: center center;
     }
 
-    header .nav-part1 img {
-        height: 50px;
-        width: 50px;
+    .main {
+        position: absolute;
+        top: 0vh;
+        left: 0;
+        height: 100vh;
+        width: 100%;
     }
 
-    header ul {
-        flex-direction: row;
-        justify-content: center;
-    }
 
-    .search-container input {
-        width: 90%;
-        font-size: 14px;
-    }
-
-    .box {
-        flex-direction: column;
+    header {
+        display: flex;
+        justify-content: space-between;
         align-items: center;
     }
 
+
+    header .nav-part1 {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        z-index: 1000;
+
+    }
+
+    header .nav-part1 img {
+        height: 8vh;
+        width: 15vw;
+    }
+
+    header nav ul {
+        display: none;
+        flex-direction: column;
+        gap: 1vh;
+        background-color: rgba(0, 0, 0, 0.9);
+        position: absolute;
+        right: 1vw;
+        top: 1vh;
+        width: fit-content;
+        border-radius: 1vh;
+        padding: 1vh;
+        transition: all 0.3s ease-in-out;
+        z-index: 1000;
+    }
+
+    header nav ul li {
+        list-style: none;
+        margin: 1vh 0;
+    }
+
+    header nav ul li a {
+        text-decoration: none;
+        color: white;
+        font-size: 2vh;
+    }
+
+    header nav {
+        position: relative;
+        z-index: 1000;
+    }
+
+    .search-section {
+        position: relative;
+        z-index: 1;
+    }
+
+    .search-section input {
+        position: relative;
+        z-index: 1;
+    }
+
+    .box {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        height: 85vh;
+        width: 100%;
+        margin-top: 1vh;
+        gap: 1vh;
+        z-index: -1;
+    }
+
     .box .results-section1 {
-        width: 90%;
-        max-height: 40vh;
+        height: fit-content;
+        max-height: 30%;
+        min-width: 98%;
+        padding: 0;
+        margin: 0;
+        font-size: 2vh;
+        border-radius: 1vh;
+    }
+
+    .box .results-section1 h3 {
+        font-size: 3vh;
+        width: 80%;
+        margin: auto;
+    }
+
+
+    .box .results-section1 ul li {
+        overflow-wrap: anywhere;
     }
 
     .box .results-section2 {
-        width: 90%;
-        margin-top: 20px;
+        box-sizing: border-box;
+        min-width: 100%;
+        max-height: 62%;
+        z-index: 0;
     }
 
-    #medicine-info {
-        max-height: 40vh;
+    .box .results-section2 #medicine-info {
+        font-size: 2vh;
+        background-color: rgba(0, 0, 0, 0.4);
+        backdrop-filter: blur(3px);
+        border-radius: 1vh;
+        padding: 0;
+        margin: 0;
+        min-width: 98%;
+        float: right;
+        height: fit-content;
+        height: 100%;
+        margin-right: 1vw;
     }
 
-    #medicine-image {
-        max-width: 100px;
+    .box .results-section2 #medicine-info h3 {
+        font-size: 3vh;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        margin: auto;
     }
+
 }
-
-Mobile (max-width: 480px)
-@media screen and (max-width: 480px) {
-    header {
-        flex-direction: column;
-        height: auto;
-        padding: 5px 1vw;
-    }
-
-    header .nav-part1 {
-        width: 100%;
-        justify-content: center;
-        margin-bottom: 10px;
-    }
-
-    header .nav-part1 img {
-        height: 40px;
-        width: 40px;
-    }
-
-    header h1 {
-        font-size: 1.2rem;
-    }
-
-    header ul {
-        flex-direction: column;
-        justify-content: center;
-    }
-
-    .search-container input {
-        width: 95%;
-        font-size: 12px;
-        padding: 8px;
-    }
-
-    .box {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .box .results-section1 {
-        width: 100%;
-        max-height: 35vh;
-    }
-
-    .box .results-section2 {
-        width: 100%;
-        margin-top: 20px;
-    }
-
-    #medicine-info {
-        max-height: 35vh;
-    }
-
-    #medicine-image {
-        max-width: 80px;
-    }
-
-    ul li {
-        padding: 5px;
-        font-size: 14px;
-    }
-} */
