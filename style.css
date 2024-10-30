@@ -375,7 +375,7 @@ header ul li:hover a {
     .box .results-section2 {
         box-sizing: border-box;
         min-width: 100%;
-        max-height: 62%;
+        max-height: 60%;
         z-index: 0;
     }
 
