@@ -261,6 +261,7 @@ header ul li:hover a {
     background-color: pink;
     height: 100%;
 }
+
 @media screen and (max-width: 570px) {
     .bg-image {
         height: 110vh;
@@ -401,4 +402,8 @@ header ul li:hover a {
         margin: auto;
     }
 
+    .box .results-section2 #medicine-info img {
+        background-color: red;
+        padding-bottom: 2vh;
+    }
 }
